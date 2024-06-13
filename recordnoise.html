@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <link rel="icon" href="https://glitch.com/favicon.ico" /> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+    <script src="p5.sound.min.js"></script>
+    <title>Weaving Pattern Generator</title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- The website JavaScript file -->
+    <script src="/script2.js"  defer></script>
+    <script src="/script_firebase.js" type="module" defer></script>
+    <style>
+      /* Additional CSS to center the text */
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      /* Additional CSS to add space between text and image */
+      .text-image-spacing {
+        margin-top: 40px; /* Adjust as needed */
+      }
+      #mainCanvas {
+        -webkit-box-shadow: -1px 3px 41px -1px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: -1px 3px 41px -1px rgba(0, 0, 0, 0.75);
+        box-shadow: -1px 3px 41px -1px rgba(0, 0, 0, 0.75);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex items-center justify-center flex-col" id="recordContent">
+      <!-- Added flex-col for vertical alignment -->
+      <p
+        id="topText"
+        class="p-4"
+        style="text-align: center; color: red; font-size: 30px"
+      >
+        PRESS ONCE TO RECORD 5 SECS OF
+        <br />
+        REPETITIVE NOISE/SOUND
+      </p>
+      <div class="min-h-96 w-2/5 px-8 p-7" id="recordingContent">
+        <div
+          class="flex items-center justify-center flex-col"
+          id="recordContent text-image-spacing"
+        >
+          <!-- Added a div for spacing -->
+          <button id="recordButton" class="border-0">
+            <img
+              class="hover:cursor-pointer hover:blur-sm min-h-72 object-contain"
+              src="images/mic-vector-01.png"
+            />
+          </button>
+          <div id="audioContent" class="flex hidden">
+            <button
+              id="rerecordButton"
+              class="p-1 m-2 rounded-md hover:shadow-lg"
+            >
+              Rerecord
+            </button>
+            <button
+              id="generateButton"
+              class="p-1 m-2 rounded-md hover:shadow-lg"
+            >
+              Generate
+            </button>
+          </div>
+          <div>
+            <div class="text-image-spacing">
+              <!-- Added a div for spacing -->
+              <a href="patternselection.html" style="text-decoration: none">
+                <p style="text-align: center; color: black; font-size: 20px">
+                  Back
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hidden" id="mainCanvas"></div>
+      <div id="afterGenerate" class="flex hidden">
+        <button id="sendCopy" class="p-1 m-2 rounded-md hover:shadow-lg">
+          Save
+        </button>
+        <button id="endProgram" class="p-1 m-2 rounded-md hover:shadow-lg">
+          End
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,233 @@
+`<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <link rel="icon" href="https://glitch.com/favicon.ico" /> -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+    <script src="p5.sound.min.js"></script>
+    <title>Weaving Pattern Generator</title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- The website JavaScript file -->
+    <script src="/script.js" defer></script>
+    <script src="/script_firebase.js" type="module" defer></script>
+    <style>
+          /* Additional CSS to center the text */
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      /* Additional CSS to add space between text and image */
+      .text-image-spacing {
+        margin-top: 40px; /* Adjust as needed */
+      }
+      #mainCanvas {
+        -webkit-box-shadow: -1px 3px 41px -1px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: -1px 3px 41px -1px rgba(0, 0, 0, 0.75);
+        box-shadow: -1px 3px 41px -1px rgba(0, 0, 0, 0.75);
+      }
+      #recordContent{
+        display:none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="h-full place-content-center" id="patternSelection">
+<!--      <h1 class="p-4">
+      <p style="text-align: center; color: red; font-size: 30px">
+        SEMIOTICS OF SOUND
+      </p>
+    </h1>  -->
+    <h1 class="p-4">
+      <p style="text-align: center; color: red; font-size: 30px">
+        PICK 4 OR MORE OF WEAVING PATTERNS
+      </p>
+    </h1>
+    <!--       </div> -->
+    <div class="flex flex-row w-full h-1/3 space-x-8 justify-center "> 
+      <div class="w-1/5  px-12 p-4 items-center place-content-center flex">
+        <button id="fourfourTwill">
+          <img
+            src="images/fourfourTwill.png"
+          />
+        </button>
+      </div>
+      <div class="w-1/5 px-12 p-4 items-center place-content-center flex">
+        <button id="threefiveTwill">
+          <img
+            src="images/threefiveTwill.png"
+          />
+        </button>
+      </div>
+      <div class="w-1/5 object-contain px-2 p-4 items-center place-content-center flex">
+        <button id="fourtwoPlain">
+          <img class="object-contain"
+            src="images/fourtwoPlain.png"
+          />
+        </button>
+      </div>
+      <div class="w-1/5 px-2 p-4 items-center place-content-center flex">
+        <button id="onethreebrokenTwill">
+          <img
+            src="images/onethreebrokenTwill.png"
+          />
+        </button>
+      </div>
+      <div class="w-1/5 px-2 p-4 items-center place-content-center flex">
+        <button id="honeycomb">
+          <img
+            src="images/honeycomb.png"
+          />
+        </button>
+      </div>
+    </div>
+    <div class="flex flex-row w-full space-x-8 justify-center">
+      <div class="w-1/5 px-2 p-4 items-center place-content-center flex">
+        <button id="combinationTwill">
+          <img
+            class=""
+            src="images/combinationTwill.png"
+          />
+        </button>
+      </div>
+      <div class="w-1/5 px-2 p-4 items-center place-content-center flex">
+        <button id="eightSatin">
+          <img
+            src="images/eightSatin.png"
+          />
+        </button>
+      </div>
+      <div class="w-1/5 px-2 p-4 items-center place-content-center flex">
+        <button id="eightSateen">
+          <img
+            src="semiotics-of-sound-show\images\eightSateen.png"
+          />
+        </button>
+      </div>
+      <div class="w-1/5 px-2 p-4 items-center place-content-center flex">
+        <button id="blackwhiteTwill">
+          <img
+            src="images/blackwhiteTwill.png"
+          />
+        </button>
+      </div>
+      <div class="w-1/5 px-2 p-4 items-center place-content-center flex">
+        <button id="entwinedTwill">
+          <img
+            src="images/entwinedTwill.png"
+          />
+        </button>
+      </div>
+    </div>
+    <div class="flex flex-row w-full space-x-8 p-5 justify-center text-center">
+      <br />
+      <!--     <p style="font-weight:bold">Selected Patterns:</p> html -->
+      <p class="font-bold p-2">Selected Patterns:</p>
+      <p class="p-2" id="currentPatternSelection"></p>
+    </div>
+    <div class="flex flex-row w-full space-x-8 justify-center text-center">
+      <br>
+      <br>
+        <a href="index.html" style="text-decoration: none">
+<!--           <p class="font-bold text-red-500 text-xl p-2 m-1 rounded-md border border-black hover:cursor-pointer hover:shadow-lg whitespace-nowrap"> -->
+          <p class="text-xl p-2 px-4 m-1 rounded-md border border-black hover:cursor-pointer  hover:shadow-lg whitespace-nowrap">
+             Back to Home
+          </p>
+        </a>
+        <a id="nextButton" style="text-decoration: none;">
+<!--        <h1 class="font-bold text-red-500 text-2xl hover:cursor-pointer hover:text-red-700">Next</h1> -->
+<!--             <h1 class="text-red-500 text-xl p-2 m-1 rounded-md border border-black hover:cursor-pointer hover:shadow-lg"> -->
+            <h1 class="text-gray-50 bg-neutral-700 text-xl p-2 px-10 m-1 rounded-md border border-black hover:cursor-pointer hover:shadow-lg">
+            Next
+            </h1>
+      </a>
+    </div>
+      </div>
+    
+    
+     <div class="flex items-center justify-center flex-col" id="recordContent">
+      <!-- Added flex-col for vertical alignment -->
+      <p
+        id="topText"
+        class="p-4"
+        style="text-align: center; color: red; font-size: 30px"
+      >
+        PRESS ONCE TO RECORD 5 SECS OF
+        <br />
+        REPETITIVE NOISE/SOUND
+      </p>
+      <div class="min-h-96 w-2/5 px-8 p-7" id="recordingContent">
+        <div
+          class="flex items-center justify-center flex-col"
+          id="recordContent text-image-spacing"
+        >
+          <!-- Added a div for spacing -->
+          <button id="recordButton" class="border-0">
+            <img
+              class="hover:cursor-pointer hover:blur-sm min-h-72 object-contain"
+              src="images/mic-vector-01.png"
+            />
+          </button>
+          <br>
+          <div id="audioContent" class="flex hidden space-x-4">
+            <button
+              id="rerecordButton"
+              class="p-2 px-4 m-1 rounded-md hover:shadow-lg border border-black hover:shadow-lg text-xl"
+            >
+              Restart
+            </button>
+            <button
+              id="generateButton"
+              class="text-gray-50 bg-neutral-700 p-2 px-4 m-1 rounded-md hover:shadow-lg border border-black hover:shadow-lg text-xl"
+            >
+              Generate
+            </button>
+          </div>
+          <div>
+            <div class="text-image-spacing">
+              <!-- Added a div for spacing -->
+              <a href="index.html" style="text-decoration: none">
+<!--                 <p style="text-align: center" class="p-2 m-1 rounded-md border border-black hover:shadow-lg text-xl whitespace-nowrap"> -->
+                <p class="text-xl p-2 px-4 m-1 rounded-md border border-black hover:cursor-pointer hover:shadow-lg whitespace-nowrap">
+                  Back to Home
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hidden" id="mainCanvas"></div>
+       <br>
+      <div id="afterGenerate" class="flex hidden space-x-4">
+        <button id="endProgram" class="p-2 m-1 rounded-md border border-black hover:shadow-lg text-lg whitespace-nowrap">
+          Back to Home
+        </button>
+        <button id="sendCopy" class="text-gray-50 bg-neutral-700 p-2 m-1 rounded-md border border-black hover:shadow-lg text-lg whitespace-nowrap">
+          Send me a copy
+        </button>
+      </div>
+    </div>
+    <div id="myModal" class="flex items-center justify-center flex-col modal">
+        <div class="modal-content flex flex-col justify-center items-center">
+            <p class="text-base font-bold text-center">Your sound weaving is about to timeout!</p>
+          <div class="items-center flex-row p-3 space-x-1">
+            <button id="endButton" class="p-1 m-2 rounded-md">
+              <div class="items-center flex-row"> </div>
+                End Session</button>
+            <button id="continueButton" class="text-gray-50 bg-neutral-700 p-1 m-2 rounded-md">
+              <div class="items-center flex-row"> </div>
+              Continue Session</button>
+          </div>  
+        </div>
+    </div>
+  </body>
+</html>

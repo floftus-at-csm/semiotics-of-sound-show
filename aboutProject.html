@@ -1,0 +1,63 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Weaving Pattern Generator</title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="/styleAbout.css" />
+
+    <!-- The website JavaScript file -->
+    <!-- <script src="/script.js" defer></script> -->
+  </head>
+ <body class="flex items-center justify-center">
+    <div class="flex items-center justify-center flex-col">
+    <h1 style="text-align: center; color: black; " class="text-2xl">
+      SEMIOTICS OF SOUND</h1>
+      <br>
+    <div class="text-md text-justify">
+            This project explores the idea of visualising everyday repetitive noises through weaving and coding.
+            How can we translate intangible and abstract sounds into physical forms through weaving? <br>
+      <br>
+            By utilising coding to visualise noises into weaving, 
+            a coding framework is set up to translate a sound duration into unique weaving patterns.
+            This framework enables the analysis of basic sound parameters like amplitudes, frequencies and waveform signals.
+            Each parameter determines a specific weaving pattern, with the code selecting appropriate
+            structures based on volume or pitch levels. For instance, higher pitches will trigger denser weft patterns.
+            The configuration allows for pattern overlaps which results in distinctive weaving patterns. <br>
+      <br>
+            This project also encourages ordinary people without previous knowledge of weaving or access to a loom to create 
+            weaving patterns solely from sound. This is in the hope of promoting and raising more awareness to weaving. <br>
+      <br>
+            A big special thanks to Felix Loftus, code technician at Central Saint Martins, for making this project possible.
+    
+      </div>  
+      <br>
+     <a href="index.html" style="text-decoration: none">
+<!--        <p style="color: red; font-size: 20px"> -->
+       <p class="p-2 px-4 m-1 rounded-md hover:shadow-lg border border-black hover:shadow-lg text-xl">
+         End
+       </p>
+      </a>
+      <br>
+      <br>
+  </div>
+  
+     <div id="myModal" class="flex items-center justify-center flex-col modal" style="display:none;">
+        <div class="modal-content flex flex-col justify-center items-center">
+            <p class="text-base font-bold text-center">Your sound weaving is about to timeout!</p>
+          <div class="items-center flex-row p-3 space-x-1">
+            <button id="endButton" class="p-1 m-2 rounded-md">
+              <div class="items-center flex-row"> </div>
+                End Session</button>
+            <button id="continueButton" class="text-gray-50 bg-neutral-700 p-1 m-2 rounded-md">
+              <div class="items-center flex-row"> </div>
+              Continue Session</button>
+          </div>  
+        </div>
+    </div>
+  </body>
+</html>

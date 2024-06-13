@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <link rel="icon" href="https://glitch.com/favicon.ico" /> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Micro+5+Charted&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Weaving Pattern Generator</title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- The website JavaScript file -->
+    <script src="/download.js" type="module" defer></script>
+    <style>
+    /* Additional CSS to center the text */
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+  </head>
+  <body>
+   <div class="flex w-screen h-screen justify-center place-items-center items-center flex-col">
+      <div class="p-4 pattern-container">
+      <img id="generatedPattern" class="min-h-96 object-contain" src="">  
+      </div>
+      <div class="p-1">
+      <button id="downloadButton"
+        class="p-1 m-2 rounded-md hover:shadow-lg ">
+        Download image
+      </button>  
+      <button id="aboutProject" class="p-1 m-2 rounded-md hover:shadow-lg">
+          More about the project
+      </button>
+      <button id="endProgram" class="p-1 m-2 rounded-md hover:shadow-lg">
+          End
+        </button>
+      </div>
+    </div>
+      <div id="myModal" class="flex items-center justify-center flex-col modal" style="display:none;">
+        <div class="modal-content flex flex-col justify-center items-center">
+            <p class="text-base font-bold text-center">Your sound weaving is about to timeout!</p>
+          <div class="items-center flex-row p-3 space-x-1">
+            <button id="endButton" class="p-1 m-2 rounded-md">
+              <div class="items-center flex-row"> </div>
+                End Session</button>
+            <button id="continueButton" class="text-gray-50 bg-neutral-700 p-1 m-2 rounded-md">
+              <div class="items-center flex-row"> </div>
+              Continue Session</button>
+          </div>  
+        </div>
+    </div>
+  </body>
+</html>

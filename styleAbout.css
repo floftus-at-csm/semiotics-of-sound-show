@@ -1,0 +1,190 @@
+
+
+/* Our default values set as CSS variables */
+:root {
+    --color-bg: #69F7BE;
+    --color-text-main: #000000;
+    --color-primary: #FFFF00;
+    --wrapper-height: 87vh;
+    --image-max-width: 300px;
+    --image-margin: 3rem;
+    --font-family: "HK Grotesk";
+    --font-family-header: "HK Grotesk";
+  }
+  
+  /* Basic page style resets */
+  * {
+    box-sizing: border-box;
+  }
+  [hidden] {
+    display: none !important;
+  }
+  
+  /* Import fonts */
+  @font-face {
+    font-family: HK Grotesk;
+    src: url("fonts/605e2a51-d45f-4d87-a285-9410ad350515_HKGrotesk-Regular.otf")
+      format("opentype");
+  }
+  @font-face {
+    font-family: HK Grotesk;
+    font-weight: bold;
+    src: url("fonts/605e2a51-d45f-4d87-a285-9410ad350515_HKGrotesk-Bold.otf")
+      format("opentype");
+  }
+  
+  @font-face {
+    font-family: "terminal grotesque";
+    src: url("fonts/terminal-grotesque.ttf")
+      format("truetype"); 
+  }
+  /* Terminal Grotesque by Raphaël Bastide, with the contribution of Jérémy Landes. Distributed by velvetyne.fr. */
+  
+  
+  .divider {
+    padding: 0 1rem;
+  }
+  /******************************************************************************
+  END Glitch hello-app default styles
+  ******************************************************************************/
+  
+  body {
+    font-family: terminal grotesque;
+    background-color: rgb(255, 255, 255);
+  /*   overflow:hidden; */
+    padding:30px;
+     padding-top: 10px;
+  }
+  .micro-5-charted-regular {
+    font-family: "Micro 5 Charted", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  
+  /* Page structure */
+  .wrapper {
+    min-height: var(--wrapper-height);
+    display: grid;
+    place-items: center;
+    margin: 0 1rem;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Very light scaling for our illustration */
+  .title {
+    color: #2800FF;
+    font-family: HK Grotesk;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 100px;
+    line-height: 105%;
+    margin: 0;
+  }
+  
+  /* Very light scaling for our illustration */
+  .illustration {
+    max-width: 100%;
+    max-height: var(--image-max-width);
+    margin-top: var(--image-margin);
+  }
+  
+  /* Instructions */
+  .instructions {
+    margin: 1rem auto 0;
+  }
+  
+  /* Button - Add it from the README instructions */
+  button,
+  input {
+    font-family: inherit;
+    font-size: 100%;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    transition: 500ms;
+  } 
+  
+  /* Subheading */
+  h2 {
+    color: #2800FF;
+  }
+  
+  /* Interactive image */
+  .illustration:active {
+    transform: translateY(5px);
+  }
+  
+  /* Button dip
+  - Toggling this class on and off will move it down and up again
+  - The button transition property above determines the speed of the translate (500ms)
+  */
+  .dipped {
+    transform: translateY(5px);
+  }
+  
+  /* Links that open files in the editor */
+  .fileopener {
+    cursor:pointer;
+    font-weight:bold;
+    border-bottom:3px solid var(--color-primary);
+    color: var(--color-secondary);
+  }
+  .fileopener:hover {
+    border-bottom:3px solid var(--color-secondary);
+  }
+  
+  /* .sfilter: blur(5px);Pattlur(5px);  
+  } */
+  /* button{
+    filter: blur(5px);
+  } */
+  /* class - there are multiple instances - for groups */
+  /* ids - these are unique */
+  
+  .selectedPattern{
+  /*   filter: blur(5px); */
+    filter: drop-shadow(10px 10px 15px black);
+    -webkit-filter: drop-shadow( 10px 10px 15px black);
+    background:transparent !important;
+  }
+  .unselectedPattern{
+      filter: drop-shadow(0px 0px 0px transparent);
+    -webkit-filter: drop-shadow( 0px 0px 0px transparent);
+    background:transparent !important;
+  }
+  img{
+    max-height:30vh;
+  }
+  /* #topText{
+    padding:20px;
+  } */
+  
+  /* Modal styles */
+  .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.4);
+      padding-top: 60px;
+  }
+  
+  .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 300px;
+  }
